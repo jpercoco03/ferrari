@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="proj2style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Ferrari</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#models">Models</a>
+            <a href="#contact">Contact</a>
+            <a href="#Links">Links</a>
+            <select id="languageSelect">
+                <option value="?lang=en">English</option>
+                <option value="javascript:translatePage('es')">Español</option>
+            </select>
+        </nav>
+        <img src="https://www.freewebheaders.com/wp-content/gallery/cars/cache/cars-header-2136-1024x300.jpg-nggid03533-ngg0dyn-1280x375x100-00f0w010c010r110f110r010t010.jpg" height="" width="">
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>Home</h1>
+            <p>Welcome to the official Ferrari website. Here you can browse our latest models and check out what's new here at Ferrari.</p>
+            <h2>Discover Legendary Performance</h2>
+            <p>Experience the thrill of precision engineering and unparalleled performance with our iconic models, meticulously crafted to push the boundaries of automotive innovation.</p>
+            <h2>Stay Connected</h2>
+            <p>Follow us on social media to join our passionate community of Ferrari enthusiasts, and be the first to know about exclusive events, product launches, and behind-the-scenes insights.</p>
+            <h2>Visit Us</h2>
+            <p>Plan your visit to one of our state-of-the-art showrooms or authorized dealerships worldwide, where our knowledgeable staff awaits to assist you in finding the Ferrari of your dreams.</p>
+        </section>
+
+        <section id="about">
+            <h1>About Us</h1>
+            <p>Ferrari is an Italian luxury sports car manufacturer based in Maranello, Italy. The company was founded by Enzo Ferrari in 1939 as Auto Avio Costruzioni, and the first Ferrari car, the 125 S, was built in 1947. Since then, Ferrari has become synonymous with high-performance automobiles, racing success, and automotive innovation.</p>
+            <h2>Our Mission</h2>
+            <p>At Ferrari, our mission is to create exceptional sports cars that embody the spirit of innovation, performance, and luxury. We are dedicated to pushing the boundaries of automotive engineering and design to deliver an unparalleled driving experience for our customers.</p>
+            <h2>Our Values</h2>
+            <ul>
+                <p><strong>Excellence:</strong> We strive for excellence in everything we do, from engineering and design to customer service and racing.</p>
+                <p><strong>Innovation:</strong> We are committed to pushing the boundaries of automotive innovation to create cutting-edge sports cars.</p>
+                <p><strong>Passion:</strong> Our passion for cars and racing fuels our drive to succeed and deliver exceptional results.</p>
+                <p><strong>Heritage:</strong> We honor our rich heritage and racing legacy while embracing the future of automotive technology and design.</p>
+            </ul>
+            <h2>Company History</h2>
+            <p>Ferrari has a storied history in motorsports, with numerous victories in Formula One racing, endurance racing, and other prestigious competitions. Our racing success has not only shaped our brand identity but also inspired the development of our road cars.</p>
+        </section>
+
+        <div class="models">
+            <section id="models">
+                <h1>Models</h1>
+                <p>Ferrari 458</p>
+                <img src="https://www.motorbiscuit.com/wp-content/uploads/2020/12/Armored-Ferrari-458-Speciale.jpg" alt="Ferrari 458" height="175" width="360">
+                <p>Ferrari 488</p>
+                <img src="https://www.supercars.net/blog/wp-content/uploads/2016/05/2016-Ferrari-488-Spider-front-three-quarter-021.jpg" alt="Ferrari 488" height="175" width="360">
+            </section>
+        </div>
+
+        <section id="contact">
+            <h1>Contact Us</h1>
+            <p>Have questions or feedback? Contact us using the information below:</p>
+            <div class="contact-info">
+                <h2>General Inquiries</h2>
+                <p>Email: info@ferrari.com</p>
+                <p>Phone: +1 (123) 456-7890</p>
+                <p>Address: Via Abetone Inferiore n. 4, I-41053 Maranello (MO), Italy</p>
+            </div>
+            <div class="contact-info">
+                <h2>Sales & Customer Service</h2>
+                <p>Email: sales@ferrari.com</p>
+                <p>Phone: +1 (123) 456-7891</p>
+            </div>
+            <div class="contact-info">
+                <h2>Media & Press Inquiries</h2>
+                <p>Email: press@ferrari.com</p>
+                <p>Phone: +1 (123) 456-7892</p>
+            </div>
+        </section>
+
+        <div class="Links">
+            <section id="Links">
+                <h1>Important Links</h1>
+                <a href="https://gpracingstats.com/constructors/ferrari/">Ferrari F1 Stats</a>
+                <br>
+                <a href="https://en.wikipedia.org/wiki/Scuderia_Ferrari">Learn more</a>
+            </section>
+        </div>
+<br>
+<br>
+<br>
+        <footer>
+            <p2>&copy; 2024 Ferrari. All rights reserved.</p2>
+        </footer>
+    </main>
+
+    <script>
+        function translatePage(language) {
+            const elements = document.querySelectorAll('h1, h2, p, li, a');
+            elements.forEach(element => {
+                const text = element.textContent;
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${language}&dt=t&q=${text}`);
+                xhr.send();
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        const translatedText = JSON.parse(xhr.responseText)[0][0][0];
+                        element.textContent = translatedText;
+                    } else {
+                        console.error('Error:', xhr.statusText);
+                    }
+                };
+            });
+        }
+
+        document.getElementById('languageSelect').addEventListener('change', function() {
+            const selectedLanguage = this.value;
+            if (selectedLanguage === 'javascript:translatePage(\'es\')') {
+                translatePage('es');
+            } else {
+                window.location.href = selectedLanguage;
+            }
+        });
+    </script>
+</body>
+
+</html>
